@@ -7,7 +7,6 @@
     <groupId>uk.khall</groupId>
     <artifactId>JavaETF</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <!--  Could not find artifact xuggle:xuggle-xuggler:jar:5.2 in central (https://repo.maven.apache.org/maven2) -->
     <repositories>
         <repository>
             <id>mvn repo</id>
@@ -72,19 +71,15 @@
             <artifactId>deeplearning4j-nn</artifactId>
             <version>${dl4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>deeplearning4j-nlp</artifactId>
             <version>${dl4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>deeplearning4j-zoo</artifactId>
             <version>${dl4j.version}</version>
         </dependency>
-
-
     </dependencies>
 </project>

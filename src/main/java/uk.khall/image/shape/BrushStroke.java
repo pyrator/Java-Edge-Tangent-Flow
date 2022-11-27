@@ -1,7 +1,5 @@
 package uk.khall.image.shape;
 
-import uk.khall.image.utils.pallet.KMColor;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -108,25 +106,7 @@ public class BrushStroke {
         }
         return paintColor;
     }
-    private void drawBrushLine(ArrayList<PointObject> points, Color color){
 
-
-
-        for (PointObject pointObject : points){
-
-            try {
-                Color underlyingColor = new Color(bufferedImage.getRGB((int)pointObject.getX(),  (int)pointObject.getY()));
-                KMColor kmColor = new KMColor(primaryColor);
-                kmColor.mix(underlyingColor);
-                graphics2D.setPaint(getRandomColor(underlyingColor,color));
-                graphics2D.drawLine((int)pointObject.getX(),  (int)pointObject.getY(),(int)pointObject.getX(),(int)pointObject.getY());
-            } catch (Exception e) {
-                //e.printStackTrace();
-                System.out.println("error at " + pointObject.getX() + pointObject.getY());
-            }
-
-        }
-    }
 
     public void nibline(int x,int y,int x2, int y2, BufferedImage src, Graphics2D fg ) {
         int x1 = x;

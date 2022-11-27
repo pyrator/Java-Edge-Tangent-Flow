@@ -1,7 +1,6 @@
 package uk.khall.image.shape;
 
 import uk.khall.image.utils.pallet.ColorSpaceUtils;
-import uk.khall.image.utils.pallet.KMColor;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

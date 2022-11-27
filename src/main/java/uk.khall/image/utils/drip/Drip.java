@@ -3,8 +3,6 @@ package uk.khall.image.utils.drip;
 
 
 
-import uk.khall.image.utils.pallet.KMColor;
-
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
@@ -336,103 +334,6 @@ public class Drip {
 
     }
 
-    public void addMixDrop(Color color, int x, int y, int r){
-        //graphics.setPaint(color);
-        if (r < 5)
-            r=5;
-        double xxx=0, yyy=0;
-        try {
-            if (g2 != null && bi != null){
-                g2.setBackground(Color.WHITE);
-                g2.setPaint(Color.WHITE);
-                g2.fillRect(0,0,bi.getWidth(), bi.getHeight());
-
-                shape =  createPath(x,y,r);
-                double width = shape.getBounds2D().getWidth();
-                double height = shape.getBounds2D().getHeight();
-                double xx = shape.getBounds2D().getX();
-                double yy = shape.getBounds2D().getY();
-
-                g2.setColor(color.brighter());
-                g2.draw(shape);
-                pen1 = new BasicStroke (6.0F, BasicStroke.CAP_ROUND,
-                                          BasicStroke.JOIN_ROUND);
-                g2.setStroke(pen1);
-                g2.setColor(color);
-                //graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                //				RenderingHints.VALUE_ANTIALIAS_ON);
-                //g2.setComposite(AlphaComposite.SrcOver);
-                //g2.setComposite(AlphaComposite.getInstance(
-                //                AlphaComposite.SRC_OVER, 0.9f));
-                g2.fill(shape);
-                for (xxx=xx; xxx < (xx+width); xxx++){
-                    for (yyy=yy; yyy < (yy+height); yyy++){
-                        if (yyy<image.getHeight() && xxx<image.getWidth() && yyy>0 && xxx>0){
-                            KMColor back = new KMColor(new Color(image.getRGB((int)xxx,(int)yyy)));
-                            back.mix(new Color(bi.getRGB((int)xxx,(int)yyy)));
-                            graphics.setPaint(back.getColor());
-                            graphics.fillRect((int)xxx,(int)yyy,1,1);
-                        }
-                    }
-                }
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("out of bounds " + xxx + "  " + yyy);
-        }
-        //graphics.drawOval(x,y,250,250);
-
-    }
-
-
-
-    public void addMixDrop(Color color, int x, int y, int r, float outline, int variance){
-        //graphics.setPaint(color);
-        if (r < 5)
-            r=5;
-        double xxx=0, yyy=0;
-        try {
-            if (g2 != null && bi != null){
-                g2.setBackground(Color.WHITE);
-                g2.setPaint(Color.WHITE);
-                g2.fillRect(0,0,bi.getWidth(), bi.getHeight());
-
-                shape =  createPath(x,y,r, variance);
-                double width = shape.getBounds2D().getWidth();
-                double height = shape.getBounds2D().getHeight();
-                double xx = shape.getBounds2D().getX();
-                double yy = shape.getBounds2D().getY();
-
-                g2.setColor(color.brighter());
-                g2.draw(shape);
-                pen1 = new BasicStroke (outline, BasicStroke.CAP_ROUND,
-                        BasicStroke.JOIN_ROUND);
-                g2.setStroke(pen1);
-                g2.setColor(color);
-                //graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                //				RenderingHints.VALUE_ANTIALIAS_ON);
-                //g2.setComposite(AlphaComposite.SrcOver);
-                g2.setComposite(AlphaComposite.getInstance(
-                                AlphaComposite.SRC_OVER, 0.8f));
-                g2.fill(shape);
-                for (xxx=xx; xxx < (xx+width); xxx++){
-                    for (yyy=yy; yyy < (yy+height); yyy++){
-                        if (yyy<image.getHeight() && xxx<image.getWidth() && yyy>0 && xxx>0){
-                            KMColor back = new KMColor(new Color(image.getRGB((int)xxx,(int)yyy)));
-                            back.mix(new Color(bi.getRGB((int)xxx,(int)yyy)));
-                            graphics.setPaint(back.getColor());
-                            graphics.setComposite(AlphaComposite.getInstance(
-                                    AlphaComposite.SRC_OVER, 0.8f));
-                            graphics.fillRect((int)xxx,(int)yyy,1,1);
-                        }
-                    }
-                }
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("out of bounds " + xxx + "  " + yyy);
-        }
-        //graphics.drawOval(x,y,250,250);
-
-    }
 
     private GeneralPath createPath(int x , int y, int r){
         Random random = new Random(System.currentTimeMillis());
